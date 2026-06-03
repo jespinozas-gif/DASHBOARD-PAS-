@@ -146,6 +146,11 @@ mes = st.sidebar.selectbox(
     meses["Mes"]
 )
 
+mes_seleccionado = meses.loc[
+    meses["Mes"] == mes,
+    "MES1"
+].iloc[0]
+
 intendencias = ["TODAS"] + sorted(
     df["INTENDENCIA"].dropna().unique()
 )
@@ -281,10 +286,16 @@ st.dataframe(
 def crear_grafico(codigo_doc, titulo):
 
     datos = df_global[
-        df_global["COD_DOC"] == codigo_doc
+    df_global["COD_DOC"] == codigo_doc
     ].copy()
 
-    datos = datos.sort_values("MES1")
+# Mostrar desde enero hasta el mes seleccionado
+
+    datos = datos[
+    datos["MES1"] <= mes_seleccionado
+    ]
+
+datos = datos.sort_values("MES1")
 
     fig = px.line()
 
@@ -306,7 +317,7 @@ def crear_grafico(codigo_doc, titulo):
 
     fig.update_layout(
         title=titulo,
-        height=450,
+        height=250,
         yaxis_title="Porcentaje",
         xaxis_title="Mes",
         legend_title=""
