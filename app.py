@@ -346,9 +346,9 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=1,
+            y=-0.35,
             xanchor="center",
-            x=0.8
+            x=0.5
         )
     )
 
