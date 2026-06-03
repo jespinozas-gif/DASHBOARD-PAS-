@@ -38,7 +38,7 @@ st.markdown("""
     color:white;
     font-size:25px;
     font-weight:bold;
-    margin-bottom:5px;
+    margin-bottom:2px;
 }
 
 .subtitulo{
@@ -46,7 +46,7 @@ st.markdown("""
     color:white;
     font-size:18px;
     font-weight:600;
-    margin-bottom:25px;
+    margin-bottom:15px;
 }
 
 .section-title{
