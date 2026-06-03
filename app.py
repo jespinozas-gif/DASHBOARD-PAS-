@@ -304,7 +304,7 @@ st.dataframe(
 # FUNCIÓN DE GRÁFICOS
 # ==========================================================
 
-def crear_grafico(codigo_doc, titulo):
+def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
 
     datos = df_global[
         df_global["COD_DOC"] == codigo_doc
@@ -337,15 +337,19 @@ def crear_grafico(codigo_doc, titulo):
     
     fig.update_layout(
         title=titulo,
-        height=220,
-        yaxis_title="%",
+        height=230,
+        yaxis_title="Porcentaje (%)",
         xaxis_title="",
+
+        showlegend=mostrar_leyenda,
+        
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=1.02,
-            xanchor="right",
-            x=1)
+            y=1,
+            xanchor="center",
+            x=0.8
+        )
     )
 
     return fig
@@ -358,19 +362,22 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.plotly_chart(
-        crear_grafico("IC", "Imputación de Cargos"),
+        crear_grafico("IC", "Imputación de Cargos",
+        mostrar_leyenda=True),
         use_container_width=True
     )
 
 with col2:
     st.plotly_chart(
-        crear_grafico("IFI", "Informe Final de Instrucción"),
+        crear_grafico("IFI", "Informe Final de Instrucción",
+        mostrar_leyenda=False),
         use_container_width=True
     )
 
 with col3:
     st.plotly_chart(
-        crear_grafico("IAR", "Informe de Archivamiento"),
+        crear_grafico("IAR", "Informe de Archivamiento",
+        mostrar_leyenda=False),
         use_container_width=True
     )
 
@@ -378,13 +385,15 @@ col4, col5 = st.columns(2)
 
 with col4:
     st.plotly_chart(
-        crear_grafico("R1ERA", "Resolución de Subintendencia"),
+        crear_grafico("R1ERA", "Resolución de Subintendencia",
+        mostrar_leyenda=False),
         use_container_width=True
     )
 
 with col5:
     st.plotly_chart(
-        crear_grafico("R2DA", "Resolución de Intendencia"),
+        crear_grafico("R2DA", "Resolución de Intendencia",
+        mostrar_leyenda=False),
         use_container_width=True
     )  
    
