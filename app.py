@@ -126,6 +126,15 @@ df["DOCUMENTO"] = df["COD_DOC"].map(documentos)
 
 st.sidebar.header("Filtros")
 
+personales = ["TODOS"] + sorted(
+    df["PERSONAL"].dropna().unique()
+)
+
+personal = st.sidebar.selectbox(
+    "Personal",
+    personales
+)
+
 meses = (
     df[["MES1", "Mes"]]
     .drop_duplicates()
@@ -160,6 +169,11 @@ tipo = st.sidebar.selectbox(
 # ==========================================================
 
 df_global = df.copy()
+
+if personal != "TODOS":
+    df_global = df_global[
+        df_global["PERSONAL"] == personal
+    ]
 
 if intendencia != "TODAS":
     df_global = df_global[
