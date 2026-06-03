@@ -340,15 +340,20 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         height=230,
         yaxis_title="Porcentaje (%)",
         xaxis_title="",
-
+        
         showlegend=mostrar_leyenda,
         
         legend=dict(
             orientation="h",
-            yanchor="bottom",
+            yanchor="top",
             y=-0.35,
             xanchor="center",
             x=0.5
+        ),
+        
+        margin=dict(
+            t=50,
+            b=80
         )
     )
 
