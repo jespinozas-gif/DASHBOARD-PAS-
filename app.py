@@ -35,16 +35,16 @@ st.markdown("""
 
 .titulo-principal{
     text-align:center;
-    color:#003B7A;
-    font-size:32px;
+    color:white;
+    font-size:25px;
     font-weight:bold;
     margin-bottom:5px;
 }
 
 .subtitulo{
     text-align:center;
-    color:#0096D6;
-    font-size:20px;
+    color:white;
+    font-size:18px;
     font-weight:600;
     margin-bottom:25px;
 }
