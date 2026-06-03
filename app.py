@@ -30,35 +30,56 @@ st.markdown("""
 <style>
 
 .main {
-    background-color: #F8FAFC;
+    background-color: #FFFFFF;
 }
 
+/* Título principal */
 .titulo-principal{
     text-align:center;
-    color:white;
-    font-size:25px;
-    font-weight:bold;
-    margin-bottom:2px;
+    color:#003B7A;
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:0px;
+    padding-bottom:0px;
 }
 
+/* Subtítulo */
 .subtitulo{
     text-align:center;
-    color:white;
+    color:#4B5563;
     font-size:18px;
     font-weight:600;
-    margin-bottom:15px;
+    margin-top:0px;
+    margin-bottom:20px;
 }
 
+/* Títulos de secciones */
 .section-title{
     color:#003B7A;
-    font-weight:bold;
+    font-weight:700;
     font-size:22px;
-    margin-top:15px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* Tarjetas */
+[data-testid="stMetric"]{
+    background-color:white;
+    border:1px solid #D9E2F1;
+    border-radius:10px;
+    padding:10px;
+}
+
+/* Contenedores de gráficos */
+[data-testid="stPlotlyChart"]{
+    background-color:white;
+    border:1px solid #D9E2F1;
+    border-radius:10px;
+    padding:5px;
 }
 
 </style>
 """, unsafe_allow_html=True)
-
 # ==========================================================
 # CARGA DE DATOS
 # ==========================================================
