@@ -313,41 +313,57 @@ def crear_grafico(codigo_doc, titulo):
         name="Ejecución Anual",
         line=dict(color="orange", width=3)
     )
-
+    
     fig.update_layout(
         title=titulo,
-        height=250,
-        yaxis_title="Porcentaje",
-        xaxis_title="Mes",
-        legend_title=""
+        height=220,
+        yaxis_title="%",
+        xaxis_title="",
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1)
     )
 
     return fig
 
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.plotly_chart(
-            crear_grafico("IC","Imputación de Cargos"),
-            use_container_width=True )
-    
-    with col2:
-        st.plotly_chart(
-            crear_grafico("IFI","Informe Final de Instrucción"),
-            use_container_width=True  )
-       
-    col3, col4 = st.columns(2)
-    
-    with col3:
-        st.plotly_chart(
-            crear_grafico("IAR","Informe de Archivamiento"),
-            use_container_width=True )
-    with col4:
-        st.plotly_chart(
-            crear_grafico("R1ERA","Resolución de Subintendencia"),
-            use_container_width=True)
-        
+# ==========================================================
+# GRAFICOS
+# ==========================================================
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
     st.plotly_chart(
-        crear_grafico("R2DA","Resolución de Intendencia"),
-        use_container_width=True)
+        crear_grafico("IC", "Imputación de Cargos"),
+        use_container_width=True
+    )
+
+with col2:
+    st.plotly_chart(
+        crear_grafico("IFI", "Informe Final de Instrucción"),
+        use_container_width=True
+    )
+
+with col3:
+    st.plotly_chart(
+        crear_grafico("IAR", "Informe de Archivamiento"),
+        use_container_width=True
+    )
+
+col4, col5 = st.columns(2)
+
+with col4:
+    st.plotly_chart(
+        crear_grafico("R1ERA", "Resolución de Subintendencia"),
+        use_container_width=True
+    )
+
+with col5:
+    st.plotly_chart(
+        crear_grafico("R2DA", "Resolución de Intendencia"),
+        use_container_width=True
+    )  
+   
