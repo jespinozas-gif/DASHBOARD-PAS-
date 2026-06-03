@@ -286,16 +286,15 @@ st.dataframe(
 def crear_grafico(codigo_doc, titulo):
 
     datos = df_global[
-    df_global["COD_DOC"] == codigo_doc
+        df_global["COD_DOC"] == codigo_doc
     ].copy()
 
-# Mostrar desde enero hasta el mes seleccionado
-
+    # Mostrar desde enero hasta el mes seleccionado
     datos = datos[
-    datos["MES1"] <= mes_seleccionado
+        datos["MES1"] <= mes_seleccionado
     ]
 
-datos = datos.sort_values("MES1")
+    datos = datos.sort_values("MES1")
 
     fig = px.line()
 
@@ -324,7 +323,6 @@ datos = datos.sort_values("MES1")
     )
 
     return fig
-
 # ==========================================================
 # GRÁFICO 1
 # ==========================================================
