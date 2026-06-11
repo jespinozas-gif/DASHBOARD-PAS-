@@ -281,19 +281,30 @@ for doc in columnas_documentos:
 
         fila = temp.iloc[0]
 
+        meta_anual = (
+            f"{int(fila['META ANUAL'])} "
+            f"🔵({fila['EJECUCION ANUAL']*100:.2f}%)"
+        )
+
+        meta_mensual = (
+            f"{int(fila['METACU'])} "
+            f"🔵({fila['EJECUCION MENSUAL']*100:.2f}%)"
+        )
+
         tabla[documentos[doc]] = [
-            fila["META ANUAL"],
-            fila["METACU"],
-            fila["EJACU"]
+            meta_anual,
+            meta_mensual,
+            int(fila["EJACU"])
         ]
 
     else:
 
         tabla[documentos[doc]] = [
-            0,
-            0,
+            "0 (0.00%)",
+            "0 (0.00%)",
             0
         ]
+
 
 st.dataframe(
     tabla,
