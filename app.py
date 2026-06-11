@@ -283,12 +283,12 @@ for doc in columnas_documentos:
 
         meta_anual = (
             f"{int(fila['META ANUAL'])} "
-            f"🔵({fila['EJECUCION ANUAL']*100:.2f}%)"
+            f"({fila['EJECUCION ANUAL']*100:.2f}%)"
         )
 
         meta_mensual = (
             f"{int(fila['METACU'])} "
-            f"🔵({fila['EJECUCION MENSUAL']*100:.2f}%)"
+            f"({fila['EJECUCION MENSUAL']*100:.2f}%)"
         )
 
         tabla[documentos[doc]] = [
