@@ -369,6 +369,55 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     )
 
     return fig
+# ==========================================================
+# EN EVALUACIÓN - GRÁFICO NOMINAL INDIVIDUAL
+# ==========================================================
+
+def crear_grafico_individual(codigo_doc, titulo):
+
+    datos = df_global[
+        df_global["COD_DOC"] == codigo_doc
+    ].copy()
+
+    datos = datos[
+        datos["MES1"] <= mes_seleccionado
+    ]
+
+    datos = datos.sort_values("MES1")
+
+    fig = px.line()
+
+    # Meta Individual
+    fig.add_scatter(
+        x=datos["Mes"],
+        y=datos["METIN"],
+        mode="lines+markers",
+        name="Meta Individual",
+        line=dict(color="green", width=3)
+    )
+
+    # Ejecutado Individual
+    fig.add_scatter(
+        x=datos["Mes"],
+        y=datos["EJIN"],
+        mode="lines+markers",
+        name="Ejecutado Individual",
+        line=dict(color="blue", width=3)
+    )
+
+    fig.update_layout(
+        title=f"{titulo} - Individual",
+        height=180,
+        showlegend=False,
+        margin=dict(
+            t=40,
+            b=20
+        ),
+        xaxis_title="",
+        yaxis_title=""
+    )
+
+    return fig
 
 # ==========================================================
 # GRAFICOS
@@ -411,5 +460,43 @@ with col5:
         crear_grafico("R2DA", "Resolución de Intendencia",
         mostrar_leyenda=False),
         use_container_width=True
-    )  
-   
+    ) 
+
+
+# ==========================================================
+# EN EVALUACIÓN - GRÁFICOS INDIVIDUALES
+# ==========================================================
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.plotly_chart(
+        crear_grafico_individual("IC", "IC"),
+        use_container_width=True
+    )
+
+with col2:
+    st.plotly_chart(
+        crear_grafico_individual("IFI", "IFI"),
+        use_container_width=True
+    )
+
+with col3:
+    st.plotly_chart(
+        crear_grafico_individual("IAR", "IAR"),
+        use_container_width=True
+    )
+
+col4, col5 = st.columns(2)
+
+with col4:
+    st.plotly_chart(
+        crear_grafico_individual("R1ERA", "R1ERA"),
+        use_container_width=True
+    )
+
+with col5:
+    st.plotly_chart(
+        crear_grafico_individual("R2DA", "R2DA"),
+        use_container_width=True
+    )
