@@ -630,7 +630,7 @@ if tipo_doc == "TODOS":
 
 else:
 
-    col_izq, col_der = st.columns([0.8, 1])
+    col_izq, col_der = st.columns([0.8, 1.8])
 
     with col_izq:
 
@@ -652,9 +652,39 @@ else:
         )
 
     with col_der:
-
         st.markdown(
-            "### Ranking de Intendencias"
+        "### Ranking de Intendencias")
+        st.markdown("""
+        <style>
+        [data-testid="stDataFrame"] table {
+        font-size: 11px;
+        }
+        
+        [data-testid="stDataFrame"] th {
+        white-space: normal !important;
+        text-align: center !important;
+        line-height: 1.1 !important;
+        }
+        
+        [data-testid="stDataFrame"] td {
+        text-align: center !important;
+        }
+        
+        </style>
+        """, unsafe_allow_html=True)
+        
+        st.dataframe(
+            ranking.style
+            .background_gradient(
+                cmap="RdYlGn",
+                subset=[f"% ejecución a {mes_texto}"]
+            )
+            .format({
+                f"% ejecución a {mes_texto}": "{:.2%}",
+                "% ejecución Anual": "{:.2%}"
+            }),
+            use_container_width=True,
+            height=520
         )
 
         st.dataframe(
