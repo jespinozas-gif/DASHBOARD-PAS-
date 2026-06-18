@@ -146,11 +146,11 @@ df = cargar_datos()
 # ==========================================================
 
 documentos = {
-    "IC": "Imputación de Cargos",
-    "IFI": "Informe Final de Instrucción",
-    "IAR": "Informe de Archivamiento",
-    "R1ERA": "Resolución de Subintendencia",
-    "R2DA": "Resolución de Intendencia"
+    "IC": "IMPUTACIONES DE CARGO",
+    "IFI": "INFORMES FINALES DE INSTRUCCIÓN",
+    "IAR": "INFORMES DE ARCHIVAMIENTO",
+    "R1ERA": "RESOLUCIONES DE SUBINTENDENCIA",
+    "R2DA": "RESOLUCIONES DE INTENDENCIA"
 }
 
 df["DOCUMENTO"] = df["COD_DOC"].map(documentos)
