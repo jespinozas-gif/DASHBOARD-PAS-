@@ -498,6 +498,56 @@ def crear_grafico_individual(codigo_doc, titulo):
     return fig
 
 # ==========================================================
+# TABLA RANKING INTENDENCIAS
+# ==========================================================
+
+if tipo_doc != "TODOS":
+
+    mes_texto = mes
+
+    ranking = df.copy()
+
+    if personal != "TODOS":
+        ranking = ranking[
+            ranking["PERSONAL"] == personal
+        ]
+
+    if tipo != "TODOS":
+        ranking = ranking[
+            ranking["ESTADO"] == tipo
+        ]
+
+    ranking = ranking[
+        (ranking["Mes"] == mes) &
+        (ranking["COD_DOC"] == tipo_doc)
+    ]
+
+    ranking = ranking[[
+        "INTENDENCIA",
+        "IRE",
+        "META ANUAL",
+        "METACU",
+        "EJACU",
+        "EJECUCION MENSUAL",
+        "EJECUCION ANUAL"
+    ]].copy()
+
+    ranking.columns = [
+        "INTENDENCIA",
+        "IRE",
+        "Programado 2026",
+        f"Programado a {mes_texto}",
+        f"Ejecutado a {mes_texto}",
+        f"% ejecución a {mes_texto}",
+        "% ejecución Anual"
+    ]
+
+    ranking = ranking.sort_values(
+        by=f"% ejecución a {mes_texto}",
+        ascending=False
+    )
+
+# ==========================================================
 # GRAFICOS / VISTA DINÁMICA
 # ==========================================================
 
@@ -542,23 +592,9 @@ if tipo_doc == "TODOS":
             use_container_width=True
         )
 
-else:
-
-    st.plotly_chart(
-        crear_grafico(
-            tipo_doc,
-            f"{documentos[tipo_doc]}",
-            mostrar_leyenda=True
-        ),
-        use_container_width=True
-    )
-
-
-# ==========================================================
-# EN EVALUACIÓN - GRÁFICOS INDIVIDUALES (VISTA DINÁMICA)
-# ==========================================================
-
-if tipo_doc == "TODOS":
+    # ======================================================
+    # GRÁFICOS INDIVIDUALES
+    # ======================================================
 
     col1, col2, col3 = st.columns(3)
 
@@ -596,10 +632,45 @@ if tipo_doc == "TODOS":
 
 else:
 
-    st.plotly_chart(
-        crear_grafico_individual(
-            tipo_doc,
-            tipo_doc
-        ),
-        use_container_width=True
-    )
+    col_izq, col_der = st.columns([2, 1])
+
+    with col_izq:
+
+        st.plotly_chart(
+            crear_grafico(
+                tipo_doc,
+                documentos[tipo_doc],
+                mostrar_leyenda=True
+            ),
+            use_container_width=True
+        )
+
+        st.plotly_chart(
+            crear_grafico_individual(
+                tipo_doc,
+                tipo_doc
+            ),
+            use_container_width=True
+        )
+
+    with col_der:
+
+        st.markdown(
+            "### Ranking de Intendencias"
+        )
+
+        st.dataframe(
+            ranking.style
+            .background_gradient(
+                cmap="RdYlGn",
+                subset=[
+                    f"% ejecución a {mes_texto}"
+                ]
+            )
+            .format({
+                f"% ejecución a {mes_texto}": "{:.2%}",
+                "% ejecución Anual": "{:.2%}"
+            }),
+            use_container_width=True,
+            height=520
+        )
