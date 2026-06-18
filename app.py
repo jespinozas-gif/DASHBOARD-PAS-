@@ -686,19 +686,3 @@ else:
             use_container_width=True,
             height=520
         )
-
-        st.dataframe(
-            ranking.style
-            .background_gradient(
-                cmap="RdYlGn",
-                subset=[
-                    f"% ejecución a {mes_texto}"
-                ]
-            )
-            .format({
-                f"% ejecución a {mes_texto}": "{:.2%}",
-                "% ejecución Anual": "{:.2%}"
-            }),
-            use_container_width=True,
-            height=520
-        )
