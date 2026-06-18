@@ -524,7 +524,6 @@ if tipo_doc != "TODOS":
 
     ranking = ranking[[
         "INTENDENCIA",
-        "IRE",
         "META ANUAL",
         "METACU",
         "EJACU",
@@ -533,7 +532,6 @@ if tipo_doc != "TODOS":
     ]].copy()
 
     ranking.columns = [
-        "INTENDENCIA",
         "IRE",
         "Programado 2026",
         f"Programado a {mes_texto}",
