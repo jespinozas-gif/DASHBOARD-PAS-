@@ -533,11 +533,11 @@ if tipo_doc != "TODOS":
 
     ranking.columns = [
         "IRE",
-        "Programado 2026",
-        f"Programado a {mes_texto}",
-        f"Ejecutado a {mes_texto}",
-        f"% ejecución a {mes_texto}",
-        "% ejecución Anual"
+        "Programado\n2026",
+        f"Programado\n{mes_texto}",
+        f"Ejecutado\n{mes_texto}",
+        f"% ejecución\n{mes_texto}",
+        "% ejecución\nAnual"
     ]
 
     ranking = ranking.sort_values(
