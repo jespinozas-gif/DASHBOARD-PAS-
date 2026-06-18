@@ -630,7 +630,7 @@ if tipo_doc == "TODOS":
 
 else:
 
-    col_izq, col_der = st.columns([2, 1])
+    col_izq, col_der = st.columns([1.2, 1])
 
     with col_izq:
 
