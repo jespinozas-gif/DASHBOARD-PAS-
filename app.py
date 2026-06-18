@@ -186,8 +186,19 @@ tipos = ["TODOS"] + sorted(
 )
 
 tipo = st.sidebar.selectbox(
-    "Tipo",
+    "Estado",
     tipos
+)
+
+# ==========================================================
+# FILTRO TIPO DOCUMENTO
+# ==========================================================
+
+tipos_doc = ["TODOS"] + sorted(df["COD_DOC"].dropna().unique())
+
+tipo_doc = st.sidebar.selectbox(
+    "Tipo de Documento",
+    tipos_doc
 )
 
 # ==========================================================
@@ -209,6 +220,11 @@ if intendencia != "TODAS":
 if tipo != "TODOS":
     df_global = df_global[
         df_global["ESTADO"] == tipo
+    ]
+
+if tipo_doc != "TODOS":
+    df_global = df_global[
+        df_global["COD_DOC"] == tipo_doc
     ]
 
 # ==========================================================
@@ -310,6 +326,39 @@ st.dataframe(
     tabla,
     use_container_width=True
 )
+
+# ==========================================================
+# CONDICIONAL VISTA POR DOCUMENTO
+# ==========================================================
+
+if tipo_doc == "TODOS":
+
+    pass  # la tabla ya se muestra arriba
+
+else:
+
+    st.markdown(
+        f"<div class='section-title'>RATIOS {tipo_doc}</div>",
+        unsafe_allow_html=True
+    )
+
+    fila = df_global.iloc[0] if len(df_global) > 0 else None
+
+    if fila is not None:
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.metric(
+                "EJECUCIÓN MENSUAL",
+                f"{fila['EJECUCION MENSUAL']*100:.2f}%"
+            )
+
+        with col2:
+            st.metric(
+                "EJECUCIÓN ANUAL",
+                f"{fila['EJECUCION ANUAL']*100:.2f}%"
+            )
 
 # ==========================================================
 # FUNCIÓN DE GRÁFICOS
