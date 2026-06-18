@@ -392,7 +392,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     
     fig.update_layout(
         title=titulo,
-        height=200,
+        height=230,
         yaxis_title="Porcentaje (%)",
         xaxis_title="",
         
@@ -407,8 +407,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         ),
         
         margin=dict(
-            t=40,
-            b=60
+            t=50,
+            b=80
         )
     )
 
@@ -510,14 +510,30 @@ if tipo_doc == "TODOS":
 
 else:
 
-    st.plotly_chart(
-        crear_grafico(
-            tipo_doc,
-            f"{documentos[tipo_doc]}",
-            mostrar_leyenda=True
-        ),
-        use_container_width=True
-    )
+    col_graf, col_info = st.columns([3, 1])
+
+    with col_graf:
+
+        st.plotly_chart(
+            crear_grafico(
+                tipo_doc,
+                f"{documentos[tipo_doc]}",
+                mostrar_leyenda=True
+            ),
+            use_container_width=True
+        )
+
+    with col_info:
+
+        st.metric(
+            "Ejecución Mensual",
+            f"{fila['EJECUCION MENSUAL']*100:.2f}%"
+        )
+
+        st.metric(
+            "Ejecución Anual",
+            f"{fila['EJECUCION ANUAL']*100:.2f}%"
+        )
 
 
 # ==========================================================
