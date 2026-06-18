@@ -510,30 +510,14 @@ if tipo_doc == "TODOS":
 
 else:
 
-    col_graf, col_info = st.columns([3, 1])
-
-    with col_graf:
-
-        st.plotly_chart(
-            crear_grafico(
-                tipo_doc,
-                f"{documentos[tipo_doc]}",
-                mostrar_leyenda=True
-            ),
-            use_container_width=True
-        )
-
-    with col_info:
-
-        st.metric(
-            "Ejecución Mensual",
-            f"{fila['EJECUCION MENSUAL']*100:.2f}%"
-        )
-
-        st.metric(
-            "Ejecución Anual",
-            f"{fila['EJECUCION ANUAL']*100:.2f}%"
-        )
+    st.plotly_chart(
+        crear_grafico(
+            tipo_doc,
+            f"{documentos[tipo_doc]}",
+            mostrar_leyenda=True
+        ),
+        use_container_width=True
+    )
 
 
 # ==========================================================
