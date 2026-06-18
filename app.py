@@ -439,7 +439,6 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     )
     
     fig.update_layout(
-        title=titulo,
         title=f"{titulo} - Acumulado",
         height=230,
         yaxis_title="Porcentaje (%)",
