@@ -226,6 +226,40 @@ if tipo_doc != "TODOS":
     df_global = df_global[
         df_global["COD_DOC"] == tipo_doc
     ]
+# ==========================================================
+# CONSOLIDADO NACIONAL
+# ==========================================================
+
+if intendencia == "TODAS":
+
+    df_global = (
+        df_global
+        .groupby(
+            ["MES1", "Mes", "COD_DOC"],
+            as_index=False
+        )
+        .agg({
+            "META ANUAL": "sum",
+            "METACU": "sum",
+            "EJACU": "sum",
+            "METIN": "sum",
+            "EJIN": "sum"
+        })
+    )
+
+    df_global["EJECUCION MENSUAL"] = (
+        df_global["EJACU"] /
+        df_global["METACU"]
+    ).fillna(0)
+
+    df_global["EJECUCION ANUAL"] = (
+        df_global["EJACU"] /
+        df_global["META ANUAL"]
+    ).fillna(0)
+
+    df_global["INTENDENCIA"] = "NACIONAL"
+
+    df_global["IRE"] = "NACIONAL"
 
 # ==========================================================
 # FILTRO MES SOLO TABLA
