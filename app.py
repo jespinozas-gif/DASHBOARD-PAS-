@@ -545,6 +545,12 @@ if tipo_doc != "TODOS":
         "EJECUCION ANUAL"
     ]].copy()
 
+    # ORDENAR ANTES DE RENOMBRAR
+    ranking = ranking.sort_values(
+        by="EJECUCION MENSUAL",
+        ascending=False
+    )
+
     ranking.columns = [
         "IRE",
         "Programado\n2026",
@@ -553,11 +559,6 @@ if tipo_doc != "TODOS":
         f"% ejecución\n{mes_texto}",
         "% ejecución\nAnual"
     ]
-
-    ranking = ranking.sort_values(
-        by=f"% ejecución a {mes_texto}",
-        ascending=False
-    )
 
 # ==========================================================
 # GRAFICOS / VISTA DINÁMICA
