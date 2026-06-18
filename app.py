@@ -379,7 +379,7 @@ if tipo_doc == "TODOS":
 else:
 
     st.markdown(
-        f"<div class='section-title'>RATIOS {tipo_doc}</div>",
+        f"<div class='section-title'>{documentos[tipo_doc]}</div>",
         unsafe_allow_html=True
     )
 
