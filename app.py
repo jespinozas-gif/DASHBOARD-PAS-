@@ -464,6 +464,38 @@ def crear_grafico_individual(codigo_doc, titulo):
     return fig
 
 # ==========================================================
+# TABLA RANKING INTENDENCIAS
+# ==========================================================
+
+mes_texto = mes
+
+ranking = df_tabla[
+    df_tabla["COD_DOC"] == tipo_doc
+][[
+    "INTENDENCIA",
+    "IRE",
+    "META ANUAL",
+    "METACU",
+    "EJACU",
+    "EJECUCION MENSUAL",
+    "EJECUCION ANUAL"
+]].copy()
+
+ranking.columns = [
+    "INTENDENCIA",
+    "IRE",
+    "Programado 2026",
+    f"Programado a {mes_texto}",
+    f"Ejecutado a {mes_texto}",
+    f"% ejecución a {mes_texto}",
+    "% ejecución Anual"
+]
+
+ranking = ranking.sort_values(
+    f"% ejecución a {mes_texto}",
+    ascending=False
+)
+# ==========================================================
 # GRAFICOS / VISTA DINÁMICA
 # ==========================================================
 
