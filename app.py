@@ -335,7 +335,10 @@ else:
         unsafe_allow_html=True
     )
 
-    fila = df_tabla.iloc[0] if len(df_tabla) > 0 else None
+    # 🔥 FIX IMPORTANTE: filtrar por documento
+    temp_doc = df_tabla[df_tabla["COD_DOC"] == tipo_doc]
+
+    fila = temp_doc.iloc[0] if len(temp_doc) > 0 else None
 
     if fila is not None:
 
