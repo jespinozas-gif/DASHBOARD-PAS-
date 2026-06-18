@@ -672,17 +672,25 @@ else:
         
         </style>
         """, unsafe_allow_html=True)
-        
-        st.dataframe(
+
+        ranking_style = (
             ranking.style
             .background_gradient(
                 cmap="RdYlGn",
-                subset=[f"% ejecución a {mes_texto}"]
+                subset=[f"% ejecución\n{mes_texto}"]
             )
             .format({
-                f"% ejecución a {mes_texto}": "{:.2%}",
-                "% ejecución Anual": "{:.2%}"
-            }),
+                f"% ejecución\n{mes_texto}": "{:.2%}",
+                "% ejecución\nAnual": "{:.2%}"
+            })
+            .set_properties(**{
+                "text-align": "center"
+            })
+        )
+        
+        st.dataframe(
+            ranking_style,
             use_container_width=True,
             height=520
         )
+
