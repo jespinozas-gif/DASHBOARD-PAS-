@@ -392,7 +392,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     
     fig.update_layout(
         title=titulo,
-        height=230,
+        height=200,
         yaxis_title="Porcentaje (%)",
         xaxis_title="",
         
@@ -407,8 +407,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         ),
         
         margin=dict(
-            t=50,
-            b=80
+            t=40,
+            b=60
         )
     )
 
@@ -521,39 +521,51 @@ else:
 
 
 # ==========================================================
-# EN EVALUACIÓN - GRÁFICOS INDIVIDUALES
+# EN EVALUACIÓN - GRÁFICOS INDIVIDUALES (VISTA DINÁMICA)
 # ==========================================================
 
-col1, col2, col3 = st.columns(3)
+if tipo_doc == "TODOS":
 
-with col1:
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.plotly_chart(
+            crear_grafico_individual("IC", "IC"),
+            use_container_width=True
+        )
+
+    with col2:
+        st.plotly_chart(
+            crear_grafico_individual("IFI", "IFI"),
+            use_container_width=True
+        )
+
+    with col3:
+        st.plotly_chart(
+            crear_grafico_individual("IAR", "IAR"),
+            use_container_width=True
+        )
+
+    col4, col5 = st.columns(2)
+
+    with col4:
+        st.plotly_chart(
+            crear_grafico_individual("R1ERA", "R1ERA"),
+            use_container_width=True
+        )
+
+    with col5:
+        st.plotly_chart(
+            crear_grafico_individual("R2DA", "R2DA"),
+            use_container_width=True
+        )
+
+else:
+
     st.plotly_chart(
-        crear_grafico_individual("IC", "IC"),
-        use_container_width=True
-    )
-
-with col2:
-    st.plotly_chart(
-        crear_grafico_individual("IFI", "IFI"),
-        use_container_width=True
-    )
-
-with col3:
-    st.plotly_chart(
-        crear_grafico_individual("IAR", "IAR"),
-        use_container_width=True
-    )
-
-col4, col5 = st.columns(2)
-
-with col4:
-    st.plotly_chart(
-        crear_grafico_individual("R1ERA", "R1ERA"),
-        use_container_width=True
-    )
-
-with col5:
-    st.plotly_chart(
-        crear_grafico_individual("R2DA", "R2DA"),
+        crear_grafico_individual(
+            tipo_doc,
+            tipo_doc
+        ),
         use_container_width=True
     )
