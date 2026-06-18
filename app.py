@@ -263,77 +263,70 @@ st.markdown(
 )
 
 # ==========================================================
-# TABLA RESUMEN
-# ==========================================================
-
-st.markdown(
-    "<div class='section-title'>DETALLE METAS PAS 2026</div>",
-    unsafe_allow_html=True
-)
-
-columnas_documentos = [
-    "IC",
-    "IFI",
-    "IAR",
-    "R1ERA",
-    "R2DA"
-]
-
-tabla = pd.DataFrame(
-    index=[
-        "META ANUAL",
-        "META MENSUAL",
-        "EJECUCIÓN"
-    ]
-)
-
-for doc in columnas_documentos:
-
-    temp = df_tabla[
-        df_tabla["COD_DOC"] == doc
-    ]
-
-    if len(temp) > 0:
-
-        fila = temp.iloc[0]
-
-        meta_anual = (
-            f"{int(fila['META ANUAL'])} "
-            f"({fila['EJECUCION ANUAL']*100:.2f}%)"
-        )
-
-        meta_mensual = (
-            f"{int(fila['METACU'])} "
-            f"({fila['EJECUCION MENSUAL']*100:.2f}%)"
-        )
-
-        tabla[documentos[doc]] = [
-            meta_anual,
-            meta_mensual,
-            int(fila["EJACU"])
-        ]
-
-    else:
-
-        tabla[documentos[doc]] = [
-            "0 (0.00%)",
-            "0 (0.00%)",
-            0
-        ]
-
-
-st.dataframe(
-    tabla,
-    use_container_width=True
-)
-
-# ==========================================================
-# CONDICIONAL VISTA POR DOCUMENTO
+# TABLA RESUMEN / VISTA DINÁMICA
 # ==========================================================
 
 if tipo_doc == "TODOS":
 
-    pass  # la tabla ya se muestra arriba
+    st.markdown(
+        "<div class='section-title'>DETALLE METAS PAS 2026</div>",
+        unsafe_allow_html=True
+    )
+
+    columnas_documentos = [
+        "IC",
+        "IFI",
+        "IAR",
+        "R1ERA",
+        "R2DA"
+    ]
+
+    tabla = pd.DataFrame(
+        index=[
+            "META ANUAL",
+            "META MENSUAL",
+            "EJECUCIÓN"
+        ]
+    )
+
+    for doc in columnas_documentos:
+
+        temp = df_tabla[
+            df_tabla["COD_DOC"] == doc
+        ]
+
+        if len(temp) > 0:
+
+            fila = temp.iloc[0]
+
+            meta_anual = (
+                f"{int(fila['META ANUAL'])} "
+                f"({fila['EJECUCION ANUAL']*100:.2f}%)"
+            )
+
+            meta_mensual = (
+                f"{int(fila['METACU'])} "
+                f"({fila['EJECUCION MENSUAL']*100:.2f}%)"
+            )
+
+            tabla[documentos[doc]] = [
+                meta_anual,
+                meta_mensual,
+                int(fila["EJACU"])
+            ]
+
+        else:
+
+            tabla[documentos[doc]] = [
+                "0 (0.00%)",
+                "0 (0.00%)",
+                0
+            ]
+
+    st.dataframe(
+        tabla,
+        use_container_width=True
+    )
 
 else:
 
@@ -342,7 +335,7 @@ else:
         unsafe_allow_html=True
     )
 
-    fila = df_global.iloc[0] if len(df_global) > 0 else None
+    fila = df_tabla.iloc[0] if len(df_tabla) > 0 else None
 
     if fila is not None:
 
@@ -359,7 +352,6 @@ else:
                 "EJECUCIÓN ANUAL",
                 f"{fila['EJECUCION ANUAL']*100:.2f}%"
             )
-
 # ==========================================================
 # FUNCIÓN DE GRÁFICOS
 # ==========================================================
