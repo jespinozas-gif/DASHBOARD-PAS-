@@ -78,6 +78,20 @@ st.markdown("""
     padding:5px;
 }
 
+/* DataFrame */
+[data-testid="stDataFrame"] th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    line-height: 1.1 !important;
+}
+
+[data-testid="stDataFrame"] td {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 # ==========================================================
@@ -632,6 +646,10 @@ else:
 
     col_izq, col_der = st.columns([0.8, 1.8])
 
+    # ======================================================
+    # GRÁFICOS
+    # ======================================================
+
     with col_izq:
 
         st.plotly_chart(
@@ -651,27 +669,13 @@ else:
             use_container_width=True
         )
 
+    # ======================================================
+    # RANKING DE INTENDENCIAS
+    # ======================================================
+
     with col_der:
-        st.markdown(
-        "### Ranking de Intendencias")
-        st.markdown("""
-        <style>
-        [data-testid="stDataFrame"] table {
-        font-size: 11px;
-        }
-        
-        [data-testid="stDataFrame"] th {
-        white-space: normal !important;
-        text-align: center !important;
-        line-height: 1.1 !important;
-        }
-        
-        [data-testid="stDataFrame"] td {
-        text-align: center !important;
-        }
-        
-        </style>
-        """, unsafe_allow_html=True)
+
+        st.markdown("### Ranking de Intendencias")
 
         ranking_style = (
             ranking.style
@@ -687,7 +691,7 @@ else:
                 "text-align": "center"
             })
         )
-        
+
         st.dataframe(
             ranking_style,
             use_container_width=True,
