@@ -639,13 +639,13 @@ if tipo_doc == "TODOS":
 
     with col2:
         st.plotly_chart(
-            crear_grafico_individual("IFI", "IFI"),
+            crear_grafico_individual("IFI", "IFI",mostrar_leyenda=False),
             use_container_width=True
         )
 
     with col3:
         st.plotly_chart(
-            crear_grafico_individual("IAR", "IAR"),
+            crear_grafico_individual("IAR", "IAR",mostrar_leyenda=False),
             use_container_width=True
         )
 
@@ -653,13 +653,13 @@ if tipo_doc == "TODOS":
 
     with col4:
         st.plotly_chart(
-            crear_grafico_individual("R1ERA", "R1ERA"),
+            crear_grafico_individual("R1ERA", "R1ERA",mostrar_leyenda=False),
             use_container_width=True
         )
 
     with col5:
         st.plotly_chart(
-            crear_grafico_individual("R2DA", "R2DA"),
+            crear_grafico_individual("R2DA", "R2DA",mostrar_leyenda=False),
             use_container_width=True
         )
 
