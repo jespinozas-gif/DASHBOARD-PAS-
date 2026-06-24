@@ -499,7 +499,7 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
 
     fig.update_layout(
         title=f"{titulo} - Individual",
-        height=180,
+        height=230,
         showlegend=mostrar_leyenda,
         
         legend=dict(
