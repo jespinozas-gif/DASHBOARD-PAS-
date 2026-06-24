@@ -510,8 +510,8 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
             x=0.5
         ),
         margin=dict(
-            t=40,
-            b=20
+            t=50,
+            b=80
         ),
         xaxis_title="",
         yaxis_title=""
