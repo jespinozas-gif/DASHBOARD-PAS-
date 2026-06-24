@@ -525,7 +525,7 @@ if tipo_doc != "TODOS":
         ranking = ranking[ranking["PERSONAL"] == personal]
 
     if tipo != "TODOS":
-        ranking = rankingranking["ESTADO"] == tipo]
+        ranking = ranking[ranking["ESTADO"] == tipo]
         
     if intendencia != "TODAS":
         ranking = ranking[ranking["INTENDENCIA"] == intendencia]
