@@ -514,7 +514,7 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
             b=80
         ),
         xaxis_title="",
-        yaxis_title=""
+        yaxis_title="Nº"
     )
 
     return fig
