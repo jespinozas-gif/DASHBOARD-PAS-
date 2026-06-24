@@ -430,7 +430,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         line=dict(color="purple", width=3),
         texttemplate="%{y:.1f}%",
         textposition="top center",
-        hovertemplate="%{y:.1f}%<extra></extra>"
+        hovertemplate="%{y:.1f}%<extra></extra>",
+        cliponaxis=False
     )
 
     fig.add_scatter(
@@ -441,7 +442,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         line=dict(color="orange", width=3),
         texttemplate="%{y:.1f}%",
         textposition="top center",
-        hovertemplate="%{y:.1f}%<extra></extra>"
+        hovertemplate="%{y:.1f}%<extra></extra>",
+        cliponaxis=False
     )
     
     fig.update_layout(
@@ -461,7 +463,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         ),
         
         margin=dict(
-            t=50,
+            t=60,
             b=80
         )
     )
