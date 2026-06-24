@@ -538,14 +538,10 @@ if tipo_doc != "TODOS":
     ranking = ranking.sort_values(
         by="EJECUCION MENSUAL",
         ascending=False
-    )
-    
-# =========================
-# RANKING REAL (IMPORTANTE)
-# =========================
-    ranking["Ranking"] = ranking.groupby(
-        ["Mes", "COD_DOC"]
-    ).cumcount() + 1 
+    ).reset_index(drop=True)
+
+    # 👇 ESTE ES EL RANKING REAL (NO EL INDEX)
+    ranking["Ranking"] = range(1, len(ranking) + 1)
 
     ranking = ranking[[
         "INTENDENCIA",
