@@ -491,24 +491,30 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
     fig.add_scatter(
         x=datos["Mes"],
         y=datos["METIN"],
-        mode="lines+markers",
+        mode="lines+markers+text",
         name="Meta Individual",
         line=dict(color="green", width=3),
-        hovertemplate="%{y:.1f}%<extra></extra>"
+        texttemplate="%{y:.1f}%",
+        textposition="top center",
+        hovertemplate="%{y:.1f}%<extra></extra>",
+        cliponaxis=False
     )
 
     # Ejecutado Individual
     fig.add_scatter(
         x=datos["Mes"],
         y=datos["EJIN"],
-        mode="lines+markers",
+        mode="lines+markers+text",
         name="Ejecutado Individual",
         line=dict(color="blue", width=3),
-        hovertemplate="%{y:.1f}%<extra></extra>"
+        texttemplate="%{y:.1f}%",
+        textposition="top center",
+        hovertemplate="%{y:.1f}%<extra></extra>",
+        cliponaxis=False
     )
 
     fig.update_layout(
-        title=f"{titulo} - Individual",
+        title=f"{titulo} - Mensual",
         height=230,
         showlegend=mostrar_leyenda,
         
@@ -600,21 +606,21 @@ if tipo_doc == "TODOS":
 
     with col1:
         st.plotly_chart(
-            crear_grafico("IC", "Imputación de Cargos",
+            crear_grafico("IC", "IC",
             mostrar_leyenda=True),
             use_container_width=True
         )
 
     with col2:
         st.plotly_chart(
-            crear_grafico("IFI", "Informe Final de Instrucción",
+            crear_grafico("IFI", "IFI",
             mostrar_leyenda=False),
             use_container_width=True
         )
 
     with col3:
         st.plotly_chart(
-            crear_grafico("IAR", "Informe de Archivamiento",
+            crear_grafico("IAR", "IAR",
             mostrar_leyenda=False),
             use_container_width=True
         )
@@ -623,14 +629,14 @@ if tipo_doc == "TODOS":
 
     with col4:
         st.plotly_chart(
-            crear_grafico("R1ERA", "Resolución de Subintendencia",
+            crear_grafico("R1ERA", "R1ERA",
             mostrar_leyenda=False),
             use_container_width=True
         )
 
     with col5:
         st.plotly_chart(
-            crear_grafico("R2DA", "Resolución de Intendencia",
+            crear_grafico("R2DA", "R2DA",
             mostrar_leyenda=False),
             use_container_width=True
         )
