@@ -465,7 +465,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
 # EN EVALUACIÓN - GRÁFICO NOMINAL INDIVIDUAL
 # ==========================================================
 
-def crear_grafico_individual(codigo_doc, titulo):
+def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
 
     datos = df_global[
         df_global["COD_DOC"] == codigo_doc
@@ -500,7 +500,7 @@ def crear_grafico_individual(codigo_doc, titulo):
     fig.update_layout(
         title=f"{titulo} - Individual",
         height=180,
-        showlegend=False,
+        showlegend=mostrar_leyenda,
         margin=dict(
             t=40,
             b=20
