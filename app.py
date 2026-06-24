@@ -178,6 +178,16 @@ personal = st.sidebar.selectbox(
     personales
 )
 
+if personal == "CAS":
+    texto_personal = "PERSONAL CAS"
+
+elif personal == "LOC":
+    texto_personal = "PERSONAL LOCADOR"
+
+else:
+    texto_personal = "PERSONAL GENERAL"
+    
+
 meses = (
     df[["MES1", "Mes"]]
     .drop_duplicates()
@@ -327,10 +337,10 @@ df_tabla = df_tabla[
 # TÍTULOS
 # ==========================================================
 
-st.markdown("""
+st.markdown(f"""
 <div class='titulo-principal'>
 SUNAFIL: AVANCE DE LAS METAS DEL PROCEDIMIENTO
-ADMINISTRATIVO SANCIONADOR 2026 - PERSONAL CAS
+ADMINISTRATIVO SANCIONADOR 2026 - {texto_personal}
 </div>
 """, unsafe_allow_html=True)
 
