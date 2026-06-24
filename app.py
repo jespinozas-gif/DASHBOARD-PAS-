@@ -695,7 +695,8 @@ else:
         st.plotly_chart(
             crear_grafico_individual(
                 tipo_doc,
-                tipo_doc
+                tipo_doc,
+                mostrar_leyenda=True
             ),
             use_container_width=True
         )
