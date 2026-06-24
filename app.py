@@ -429,7 +429,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         name="Ejecución Mensual",
         line=dict(color="purple", width=3),
         htexttemplate="%{y:.1f}%",
-        textposition="top center
+        textposition="top center"
     )
 
     fig.add_scatter(
@@ -439,7 +439,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         name="Ejecución Anual",
         line=dict(color="orange", width=3),
         htexttemplate="%{y:.1f}%",
-        textposition="top center
+        textposition="top center"
     )
     
     fig.update_layout(
