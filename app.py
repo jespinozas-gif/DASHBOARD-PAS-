@@ -220,7 +220,8 @@ tipos_doc = ["TODOS"] + sorted(df["COD_DOC"].dropna().unique())
 
 tipo_doc = st.sidebar.selectbox(
     "Tipo de Documento",
-    tipos_doc
+    tipos_doc,
+    format_func=lambda x: documentos_short.get(x, x)
 )
 
 # ==========================================================
@@ -333,8 +334,8 @@ if tipo_doc == "TODOS":
         "IC",
         "IFI",
         "IAR",
-        "R1ERA",
-        "R2DA"
+        "RSI",
+        "RI"
     ]
 
     tabla = pd.DataFrame(
