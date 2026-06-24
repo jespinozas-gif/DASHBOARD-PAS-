@@ -511,19 +511,19 @@ def crear_grafico_individual(codigo_doc, titulo):
 
     return fig
 
+
 # ==========================================================
-# TABLA RANKING INTENDENCIAS (CLEAN VERSION)
+# TABLA RANKING INTENDENCIAS (FIX DEFINITIVO)
 # ==========================================================
 
 if tipo_doc != "TODOS":
 
     mes_texto = mes
 
+    # 1. BASE ÚNICA
     ranking = df.copy()
 
-    # -------------------------
-    # FILTROS
-    # -------------------------
+    # 2. FILTROS (SIN ALTERAR ORDEN AÚN)
     if personal != "TODOS":
         ranking = ranking[ranking["PERSONAL"] == personal]
 
@@ -538,39 +538,32 @@ if tipo_doc != "TODOS":
         (ranking["COD_DOC"] == tipo_doc)
     ]
 
-    # -------------------------
-    # ORDEN + RESET (UNA SOLA VEZ)
-    # -------------------------
+    # 🚨 DEBUG (IMPORTANTE PARA TI AHORA)
+    # st.write(len(ranking))  <-- descomenta temporalmente
+
+    # 3. ORDEN FINAL (UNA SOLA VEZ)
     ranking = ranking.sort_values(
         by="EJECUCION MENSUAL",
         ascending=False
     ).reset_index(drop=True)
 
-    # -------------------------
-    # RANKING REAL (UNA SOLA VEZ)
-    # -------------------------
-    ranking.insert(
-        0,
-        "Ranking",
-        range(1, len(ranking) + 1)
-    )
+    # 4. RANKING REAL (UNA SOLA VEZ)
+    ranking["Ranking"] = range(1, len(ranking) + 1)
 
-    # -------------------------
-    # SELECCIÓN DE COLUMNAS (DESPUÉS DEL RANKING)
-    # -------------------------
-    ranking = ranking[[
-        "Ranking",
-        "INTENDENCIA",
-        "META ANUAL",
-        "METACU",
-        "EJACU",
-        "EJECUCION MENSUAL",
-        "EJECUCION ANUAL"
-    ]]
+    # 5. REORDENAR COLUMNAS
+    ranking = ranking[
+        [
+            "Ranking",
+            "INTENDENCIA",
+            "META ANUAL",
+            "METACU",
+            "EJACU",
+            "EJECUCION MENSUAL",
+            "EJECUCION ANUAL"
+        ]
+    ]
 
-    # -------------------------
-    # RENOMBRES FINALES
-    # -------------------------
+    # 6. RENOMBRES
     ranking.columns = [
         "Ranking",
         "INTENDENCIA",
@@ -580,7 +573,6 @@ if tipo_doc != "TODOS":
         f"% ejecución\n{mes_texto}",
         "% ejecución\nAnual"
     ]
-
 # ==========================================================
 # GRAFICOS / VISTA DINÁMICA
 # ==========================================================
