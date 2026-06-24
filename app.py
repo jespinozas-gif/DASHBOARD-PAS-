@@ -539,7 +539,7 @@ if tipo_doc != "TODOS":
     ]
 
     # 🚨 DEBUG (IMPORTANTE PARA TI AHORA)
-    # st.write(len(ranking))  <-- descomenta temporalmente
+    st.write(len(ranking))  <-- descomenta temporalmente
 
     # 3. ORDEN FINAL (UNA SOLA VEZ)
     ranking = ranking.sort_values(
