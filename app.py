@@ -625,7 +625,7 @@ if tipo_doc == "TODOS":
 
     with col1:
         st.plotly_chart(
-            crear_grafico_individual("IC", "IC"),
+            crear_grafico_individual("IC", "IC",mostrar_leyenda=True),
             use_container_width=True
         )
 
