@@ -501,6 +501,14 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         title=f"{titulo} - Individual",
         height=180,
         showlegend=mostrar_leyenda,
+        
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.35,
+            xanchor="center",
+            x=0.5
+        ),
         margin=dict(
             t=40,
             b=20
