@@ -522,24 +522,30 @@ if tipo_doc != "TODOS":
     ranking = df.copy()
 
     if personal != "TODOS":
-        ranking = ranking[
-            ranking["PERSONAL"] == personal
-        ]
+        ranking = ranking[ranking["PERSONAL"] == personal]
 
     if tipo != "TODOS":
-        ranking = ranking[
-            ranking["ESTADO"] == tipo
-        ]
+        ranking = rankingranking["ESTADO"] == tipo]
         
     if intendencia != "TODAS":
-        ranking = ranking[
-        ranking["INTENDENCIA"] == intendencia
-        ]
+        ranking = ranking[ranking["INTENDENCIA"] == intendencia]
 
     ranking = ranking[
         (ranking["Mes"] == mes) &
         (ranking["COD_DOC"] == tipo_doc)
     ]
+
+    ranking = ranking.sort_values(
+        by="EJECUCION MENSUAL",
+        ascending=False
+    )
+    
+# =========================
+# RANKING REAL (IMPORTANTE)
+# =========================
+    ranking["Ranking"] = ranking.groupby(
+        ["Mes", "COD_DOC"]
+    ).cumcount() + 1 
 
     ranking = ranking[[
         "INTENDENCIA",
@@ -561,7 +567,7 @@ if tipo_doc != "TODOS":
 
     ranking.columns = [
         "Ranking",
-        "IRE",
+        "INTENDENCIA",
         "Programado\n2026",
         f"Programado\n{mes_texto}",
         f"Ejecutado\n{mes_texto}",
