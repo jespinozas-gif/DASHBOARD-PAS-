@@ -494,9 +494,9 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         mode="lines+markers+text",
         name="Meta Individual",
         line=dict(color="green", width=3),
-        texttemplate="%{y:.1f}%",
+        texttemplate="%{y:.0f}",
         textposition="top center",
-        hovertemplate="%{y:.1f}%<extra></extra>",
+        hovertemplate="%{y:.0f}<extra></extra>",
         cliponaxis=False
     )
 
@@ -507,9 +507,9 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         mode="lines+markers+text",
         name="Ejecutado Individual",
         line=dict(color="blue", width=3),
-        texttemplate="%{y:.1f}%",
+        texttemplate="%{y:.0f}",
         textposition="top center",
-        hovertemplate="%{y:.1f}%<extra></extra>",
+        hovertemplate="%{y:.0f}<extra></extra>",
         cliponaxis=False
     )
 
