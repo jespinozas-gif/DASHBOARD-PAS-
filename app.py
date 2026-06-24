@@ -511,44 +511,42 @@ def crear_grafico_individual(codigo_doc, titulo):
 
     return fig
 
-
 # ==========================================================
-# TABLA RANKING INTENDENCIAS (FIX DEFINITIVO)
+# TABLA RANKING INTENDENCIAS (RANKING GLOBAL FIJO)
 # ==========================================================
 
 if tipo_doc != "TODOS":
 
     mes_texto = mes
 
-    # 1. BASE ÚNICA
-    ranking = df.copy()
+    # 1. BASE
+    df_rank = df.copy()
 
-    # 2. FILTROS (SIN ALTERAR ORDEN AÚN)
+    # 2. FILTROS (EXCEPTO INTENDENCIA PARA QUE NO ROMPA RANKING)
     if personal != "TODOS":
-        ranking = ranking[ranking["PERSONAL"] == personal]
+        df_rank = df_rank[df_rank["PERSONAL"] == personal]
 
     if tipo != "TODOS":
-        ranking = ranking[ranking["ESTADO"] == tipo]
+        df_rank = df_rank[df_rank["ESTADO"] == tipo]
 
-    if intendencia != "TODAS":
-        ranking = ranking[ranking["INTENDENCIA"] == intendencia]
-
-    ranking = ranking[
-        (ranking["Mes"] == mes) &
-        (ranking["COD_DOC"] == tipo_doc)
+    df_rank = df_rank[
+        (df_rank["Mes"] == mes) &
+        (df_rank["COD_DOC"] == tipo_doc)
     ]
 
-    # 🚨 DEBUG (IMPORTANTE PARA TI AHORA)
-    st.write(len(ranking))
-
-    # 3. ORDEN FINAL (UNA SOLA VEZ)
-    ranking = ranking.sort_values(
+    # 3. RANKING GLOBAL (FIJO)
+    df_rank = df_rank.sort_values(
         by="EJECUCION MENSUAL",
         ascending=False
     ).reset_index(drop=True)
 
-    # 4. RANKING REAL (UNA SOLA VEZ)
-    ranking["Ranking"] = range(1, len(ranking) + 1)
+    df_rank["Ranking"] = range(1, len(df_rank) + 1)
+
+    # 4. FILTRO VISUAL (INTENDENCIA NO AFECTA RANKING)
+    if intendencia != "TODAS":
+        ranking = df_rank[df_rank["INTENDENCIA"] == intendencia].copy()
+    else:
+        ranking = df_rank.copy()
 
     # 5. REORDENAR COLUMNAS
     ranking = ranking[
@@ -573,6 +571,7 @@ if tipo_doc != "TODOS":
         f"% ejecución\n{mes_texto}",
         "% ejecución\nAnual"
     ]
+
 # ==========================================================
 # GRAFICOS / VISTA DINÁMICA
 # ==========================================================
