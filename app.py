@@ -334,8 +334,8 @@ if tipo_doc == "TODOS":
         "IC",
         "IFI",
         "IAR",
-        "RSI",
-        "RI"
+        "R1ERA",
+        "R2DA"
     ]
 
     tabla = pd.DataFrame(
