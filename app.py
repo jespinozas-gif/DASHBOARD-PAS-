@@ -555,6 +555,7 @@ if tipo_doc != "TODOS":
         drop=True,
         inplace=True
     )
+    ranking.index = ranking.index + 1
 
     ranking.columns = [
         "IRE",
