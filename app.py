@@ -501,7 +501,7 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         x=datos["Mes"],
         y=datos["METIN"],
         mode="lines+markers+text",
-        name="Meta Individual",
+        name="Meta mensual",
         line=dict(color="green", width=3),
         texttemplate="%{y:.0f}",
         textposition="top center",
@@ -514,7 +514,7 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         x=datos["Mes"],
         y=datos["EJIN"],
         mode="lines+markers+text",
-        name="Ejecutado Individual",
+        name="Ejecutado mensual",
         line=dict(color="blue", width=3),
         texttemplate="%{y:.0f}",
         textposition="top center",
@@ -623,14 +623,14 @@ if tipo_doc == "TODOS":
     with col2:
         st.plotly_chart(
             crear_grafico("IFI", "IFI",
-            mostrar_leyenda=False),
+            mostrar_leyenda=True),
             use_container_width=True
         )
 
     with col3:
         st.plotly_chart(
             crear_grafico("IAR", "IAR",
-            mostrar_leyenda=False),
+            mostrar_leyenda=True),
             use_container_width=True
         )
 
@@ -639,14 +639,14 @@ if tipo_doc == "TODOS":
     with col4:
         st.plotly_chart(
             crear_grafico("R1ERA", "RSI",
-            mostrar_leyenda=False),
+            mostrar_leyenda=True),
             use_container_width=True
         )
 
     with col5:
         st.plotly_chart(
             crear_grafico("R2DA", "RI",
-            mostrar_leyenda=False),
+            mostrar_leyenda=True),
             use_container_width=True
         )
 
