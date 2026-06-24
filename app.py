@@ -556,11 +556,8 @@ if tipo_doc != "TODOS":
         ascending=False
     )
 
-    ranking.reset_index(
-        drop=True,
-        inplace=True
-    )
-    ranking.index = ranking.index + 1
+    ranking = ranking.reset_index(drop=True)
+    ranking.index = range(1, len(ranking) + 1)
 
     ranking.columns = [
         "IRE",
@@ -688,12 +685,15 @@ else:
     with col_der:
 
         st.markdown("### Ranking de Intendencias")
-
+        col_heat = "% ejecución\n{mes_texto}" 
+        
         ranking_style = (
             ranking.style
             .background_gradient(
                 cmap="RdYlGn",
-                subset=[f"% ejecución\n{mes_texto}"]
+                subset=[f"% ejecución\n{mes_texto}"], 
+                vmin=0,
+                vmax=1
             )
             .format({
                 f"% ejecución\n{mes_texto}": "{:.2%}",
