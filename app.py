@@ -696,6 +696,7 @@ else:
             .set_properties(**{
                 "text-align": "center"
             })
+            .hide(axis="index")
         )
 
         st.dataframe(
