@@ -153,6 +153,14 @@ documentos = {
     "R2DA": "RESOLUCIONES DE INTENDENCIA"
 }
 
+documentos_short = {
+    "IC": "IC",
+    "IFI": "IFI",
+    "IAR": "IAR",
+    "R1ERA": "RSI",
+    "R2DA": "RI"
+}
+
 df["DOCUMENTO"] = df["COD_DOC"].map(documentos)
 
 # ==========================================================
@@ -692,7 +700,7 @@ else:
         st.plotly_chart(
             crear_grafico(
                 tipo_doc,
-                documentos[tipo_doc],
+                documentos_short[tipo_doc],
                 mostrar_leyenda=True
             ),
             use_container_width=True
@@ -701,7 +709,7 @@ else:
         st.plotly_chart(
             crear_grafico_individual(
                 tipo_doc,
-                tipo_doc,
+                documentos_short[tipo_doc],
                 mostrar_leyenda=True
             ),
             use_container_width=True
