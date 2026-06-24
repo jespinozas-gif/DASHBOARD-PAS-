@@ -699,8 +699,6 @@ else:
 
         st.markdown("### Ranking de Intendencias")
         col_heat = "% ejecución\n{mes_texto}" 
-
-        ranking = ranking.reset_index(drop=True)
         
         ranking_style = (
             ranking.style
