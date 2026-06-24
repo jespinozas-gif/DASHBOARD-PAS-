@@ -427,7 +427,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         y=datos["EJECUCION MENSUAL"] * 100,
         mode="lines+markers",
         name="Ejecución Mensual",
-        line=dict(color="purple", width=3)
+        line=dict(color="purple", width=3),
+        hovertemplate="%{y:.1f}%<extra></extra>"
     )
 
     fig.add_scatter(
@@ -435,7 +436,8 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         y=datos["EJECUCION ANUAL"] * 100,
         mode="lines+markers",
         name="Ejecución Anual",
-        line=dict(color="orange", width=3)
+        line=dict(color="orange", width=3),
+        hovertemplate="%{y:.1f}%<extra></extra>"
     )
     
     fig.update_layout(
@@ -485,7 +487,8 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         y=datos["METIN"],
         mode="lines+markers",
         name="Meta Individual",
-        line=dict(color="green", width=3)
+        line=dict(color="green", width=3),
+        hovertemplate="%{y:.1f}%<extra></extra>"
     )
 
     # Ejecutado Individual
@@ -494,7 +497,8 @@ def crear_grafico_individual(codigo_doc, titulo, mostrar_leyenda=False):
         y=datos["EJIN"],
         mode="lines+markers",
         name="Ejecutado Individual",
-        line=dict(color="blue", width=3)
+        line=dict(color="blue", width=3),
+        hovertemplate="%{y:.1f}%<extra></extra>"
     )
 
     fig.update_layout(
