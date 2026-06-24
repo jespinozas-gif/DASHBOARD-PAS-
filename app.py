@@ -560,6 +560,7 @@ if tipo_doc != "TODOS":
     ranking.insert(0, "Ranking", range(1, len(ranking) + 1))
 
     ranking.columns = [
+        "Ranking",
         "IRE",
         "Programado\n2026",
         f"Programado\n{mes_texto}",
