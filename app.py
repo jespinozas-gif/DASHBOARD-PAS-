@@ -530,6 +530,11 @@ if tipo_doc != "TODOS":
         ranking = ranking[
             ranking["ESTADO"] == tipo
         ]
+        
+    if intendencia != "TODAS":
+        ranking = ranking[
+        ranking["INTENDENCIA"] == intendencia
+        ]
 
     ranking = ranking[
         (ranking["Mes"] == mes) &
