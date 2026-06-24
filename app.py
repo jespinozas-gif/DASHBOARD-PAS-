@@ -550,6 +550,11 @@ if tipo_doc != "TODOS":
         by="EJECUCION MENSUAL",
         ascending=False
     )
+
+    ranking.reset_index(
+        drop=True,
+        inplace=True
+    )
     ranking.insert(
         0,
         "Ranking", range(1,len(ranking)+1)
@@ -696,7 +701,6 @@ else:
             .set_properties(**{
                 "text-align": "center"
             })
-            .hide(axis="(index)")
         )
 
         st.dataframe(
