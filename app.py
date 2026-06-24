@@ -557,7 +557,7 @@ if tipo_doc != "TODOS":
     )
 
     ranking = ranking.reset_index(drop=True)
-    ranking.index = range(1, len(ranking) + 1)
+    ranking.insert(0, "Ranking", range(1, len(ranking) + 1))
 
     ranking.columns = [
         "IRE",
@@ -702,6 +702,7 @@ else:
             .set_properties(**{
                 "text-align": "center"
             })
+            .hide(axis="index")
         )
 
         st.dataframe(
