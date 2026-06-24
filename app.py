@@ -512,7 +512,7 @@ def crear_grafico_individual(codigo_doc, titulo):
     return fig
 
 # ==========================================================
-# TABLA RANKING INTENDENCIAS
+# TABLA RANKING INTENDENCIAS (CLEAN VERSION)
 # ==========================================================
 
 if tipo_doc != "TODOS":
@@ -521,12 +521,15 @@ if tipo_doc != "TODOS":
 
     ranking = df.copy()
 
+    # -------------------------
+    # FILTROS
+    # -------------------------
     if personal != "TODOS":
         ranking = ranking[ranking["PERSONAL"] == personal]
 
     if tipo != "TODOS":
         ranking = ranking[ranking["ESTADO"] == tipo]
-        
+
     if intendencia != "TODAS":
         ranking = ranking[ranking["INTENDENCIA"] == intendencia]
 
@@ -535,32 +538,39 @@ if tipo_doc != "TODOS":
         (ranking["COD_DOC"] == tipo_doc)
     ]
 
+    # -------------------------
+    # ORDEN + RESET (UNA SOLA VEZ)
+    # -------------------------
     ranking = ranking.sort_values(
         by="EJECUCION MENSUAL",
         ascending=False
     ).reset_index(drop=True)
 
-    # 👇 ESTE ES EL RANKING REAL (NO EL INDEX)
-    ranking["Ranking"] = range(1, len(ranking) + 1)
+    # -------------------------
+    # RANKING REAL (UNA SOLA VEZ)
+    # -------------------------
+    ranking.insert(
+        0,
+        "Ranking",
+        range(1, len(ranking) + 1)
+    )
 
+    # -------------------------
+    # SELECCIÓN DE COLUMNAS (DESPUÉS DEL RANKING)
+    # -------------------------
     ranking = ranking[[
+        "Ranking",
         "INTENDENCIA",
         "META ANUAL",
         "METACU",
         "EJACU",
         "EJECUCION MENSUAL",
         "EJECUCION ANUAL"
-    ]].copy()
+    ]]
 
-    # ORDENAR ANTES DE RENOMBRAR
-    ranking = ranking.sort_values(
-        by="EJECUCION MENSUAL",
-        ascending=False
-    )
-
-    ranking = ranking.reset_index(drop=True)
-    ranking.insert(0, "Ranking", range(1, len(ranking) + 1))
-
+    # -------------------------
+    # RENOMBRES FINALES
+    # -------------------------
     ranking.columns = [
         "Ranking",
         "INTENDENCIA",
@@ -707,7 +717,6 @@ else:
             .set_properties(**{
                 "text-align": "center"
             })
-            .hide(axis="index")
         )
 
         st.dataframe(
