@@ -425,7 +425,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     fig.add_scatter(
         x=datos["Mes"],
         y=datos["EJECUCION MENSUAL"] * 100,
-        mode="lines+markers",
+        mode="lines+markers+text",
         name="Ejecución Mensual",
         line=dict(color="purple", width=3),
         htexttemplate="%{y:.1f}%",
@@ -435,7 +435,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
     fig.add_scatter(
         x=datos["Mes"],
         y=datos["EJECUCION ANUAL"] * 100,
-        mode="lines+markers",
+        mode="lines+markers+text",
         name="Ejecución Anual",
         line=dict(color="orange", width=3),
         htexttemplate="%{y:.1f}%",
