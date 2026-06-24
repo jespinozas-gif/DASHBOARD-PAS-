@@ -629,14 +629,14 @@ if tipo_doc == "TODOS":
 
     with col4:
         st.plotly_chart(
-            crear_grafico("R1ERA", "R1ERA",
+            crear_grafico("R1ERA", "RSI",
             mostrar_leyenda=False),
             use_container_width=True
         )
 
     with col5:
         st.plotly_chart(
-            crear_grafico("R2DA", "R2DA",
+            crear_grafico("R2DA", "RI",
             mostrar_leyenda=False),
             use_container_width=True
         )
@@ -669,13 +669,13 @@ if tipo_doc == "TODOS":
 
     with col4:
         st.plotly_chart(
-            crear_grafico_individual("R1ERA", "R1ERA",mostrar_leyenda=True),
+            crear_grafico_individual("R1ERA", "RSI",mostrar_leyenda=True),
             use_container_width=True
         )
 
     with col5:
         st.plotly_chart(
-            crear_grafico_individual("R2DA", "R2DA",mostrar_leyenda=True),
+            crear_grafico_individual("R2DA", "RI",mostrar_leyenda=True),
             use_container_width=True
         )
 
