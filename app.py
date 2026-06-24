@@ -428,7 +428,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         mode="lines+markers+text",
         name="Ejecución Mensual",
         line=dict(color="purple", width=3),
-        htexttemplate="%{y:.1f}%",
+        texttemplate="%{y:.1f}%",
         textposition="top center",
         hovertemplate="%{y:.1f}%<extra></extra>"
     )
@@ -439,7 +439,7 @@ def crear_grafico(codigo_doc, titulo, mostrar_leyenda=False):
         mode="lines+markers+text",
         name="Ejecución Anual",
         line=dict(color="orange", width=3),
-        htexttemplate="%{y:.1f}%",
+        texttemplate="%{y:.1f}%",
         textposition="top center",
         hovertemplate="%{y:.1f}%<extra></extra>"
     )
