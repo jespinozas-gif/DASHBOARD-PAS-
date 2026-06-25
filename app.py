@@ -37,7 +37,7 @@ st.markdown("""
 .titulo-principal{
     text-align:center;
     color:#003B7A;
-    font-size:28px;
+    font-size:30px;
     font-weight:700;
     margin-top:-20px;
     margin-bottom:-1px;
