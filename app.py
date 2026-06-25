@@ -346,6 +346,8 @@ ADMINISTRATIVO SANCIONADOR 2026 - {texto_personal}
 
 if intendencia == "TODAS":
     subtitulo = "TODAS LAS INTENDENCIAS"
+elif intendencia == "ILM":
+    subtitulo = "IntendenciaLima Metropolitana"
 else:
     subtitulo = intendencia
 
