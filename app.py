@@ -39,6 +39,7 @@ st.markdown("""
     color:#003B7A;
     font-size:28px;
     font-weight:700;
+    margin-top:-20px;
     margin-bottom:-1px;
     padding-bottom:0px;
 }
