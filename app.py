@@ -38,8 +38,8 @@ st.markdown("""
     text-align:center;
     color:#003B7A;
     font-size:28px;
-    font-weight:600;
-    margin-bottom:0px;
+    font-weight:700;
+    margin-bottom:-1px;
     padding-bottom:0px;
 }
 
