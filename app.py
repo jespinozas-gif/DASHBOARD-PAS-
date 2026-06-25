@@ -40,7 +40,7 @@ st.markdown("""
     font-size:30px;
     font-weight:700;
     margin-top:-20px;
-    margin-bottom:-1px;
+    margin-bottom:0px;
     padding-bottom:0px;
 }
 
